@@ -78,6 +78,11 @@ module.exports = function SpazaSuggest (db){
         return uniqCode;
 
     }
+    async function allShops(name, areaId) {
+        let myShops = await db.manyOrNone(`select * from spaza`);
+        return myShops;
+
+    }
 
     // return the spaza name & id  and areaId for the spaza shop
     async function spazaLogin(code) {
@@ -130,6 +135,7 @@ module.exports = function SpazaSuggest (db){
         clientLogin,
         countOfUser,
         returnCountUser,
-        returnNameAndCode
+        returnNameAndCode,
+        allShops
     }
 }

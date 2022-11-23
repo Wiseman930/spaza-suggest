@@ -23,13 +23,20 @@
                 </div>
         </div>
 <div class="allContent">
-    <form action="client" method="post">
+    <form action="spaza" method="post">
     <div class="login">
         <h2 class="login-header">Spaza Login</h2>
-        <form class="login-container">
-        <p><input type="text" placeholder="Enter Passcode" name="fname"></p>
-        <p><input type="submit" name="fontSizeControl" value="submit"></p>
-            <div class="p">
+        <label class="townText" for="towns">Select Your Spaza</label>
+         <select id="banks" name="area" class="areaname" aria-label="State">
+                            <option value='' >Select Your Shop</option>
+                            {{#each spazaShop}}
+                            <option value={{id}} >{{shop_name}}</option>
+                            {{/each}}
+        </select>
+    <div><label for="Amount">Product suggestion</label>
+    <input type="text" placeholder="enter code" id="lname" name="suggest"></div>
+    <button class="log" type="submit" id="log" name="button">Login</button>
+    <div class="p">
         <P>
             <div class="errorMessages">
                 {{#if messages.errors}}

@@ -97,7 +97,10 @@ module.exports = function suggestionRoute(db, spazaSuggest){
       res.redirect(`/client/${uppercaseName}`);
     }
     async function ownerLogin(req, res){
-      res.render('spaza_login')
+      let spazaShop = await spazaSuggest.allShops()
+
+      res.render('spaza_login',
+        {spazaShop})
     }
     return{
         home,
