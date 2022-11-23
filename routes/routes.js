@@ -102,6 +102,74 @@ module.exports = function suggestionRoute(db, spazaSuggest){
       res.render('spaza_login',
         {spazaShop})
     }
+    async function ownerRoute(req, res){
+      let shopName = req.body.shop;
+      let code = req.body.code;
+
+      let  storedCode = await db.oneOrNone('SELECT COUNT(*) FROM spaza WHERE code=$1', [code])
+      let  storeName = await db.oneOrNone('SELECT shop_name FROM spaza WHERE id=$1', [shopName])
+
+
+      if(shopName == '' && code == '' ){
+
+       req.flash('errors', 'Enter Shop and Code')
+       res.redirect('/spaza_login');
+     }
+     if(shopName != '' && code == '' ){
+
+       req.flash('errors', 'Enter Code');
+       res.redirect('/spaza_login');
+     }
+     if(shopName == '' && code != '' ){
+       req.flash('errors', 'Enter Shop')
+       res.redirect('/spaza_login');
+     }
+     if(shopName != '' && code != '' && storedCode.count == 1 ){
+       res.redirect(`/owner/${storeName.shop_name}`);
+     }
+     }
+     async function dynamicSpaza (req, res) {
+      let enterSpaza = req.params.spazaname;
+      let registerSpaza = enterSpaza;
+      let  storeName = await db.oneOrNone('SELECT area_id FROM spaza WHERE shop_name=$1', [enterSpaza])
+      let area_id;
+      if(storeName !== null){
+        area_id = storeName.area_id;
+      }
+      let  product = await db.oneOrNone('SELECT product_name FROM suggestion WHERE area_id=$1', [area_id])
+      let myProduct;
+      if(product !== null){
+        myProduct = product.product_name;
+      }
+
+      let client_ID = await db.oneOrNone('SELECT client_id FROM suggestion WHERE area_id=$1', [area_id])
+      let id;
+      let username;
+      let names;
+      if(client_ID !== null){
+        id = (client_ID.client_id)
+        username =  await db.oneOrNone('SELECT username FROM spaza_client WHERE id=$1', [id])
+        names = username.username;
+      }
+
+
+      res.render('owner',
+      {
+      registerSpaza,
+      myProduct,
+      names
+
+    });
+
+    }
+
+    async function dynamicSpazaPost (req, res) {
+      let enterSpaza = req.params.username;
+
+
+      res.redirect(`/client/${enterSpaza}`);
+
+    }
     return{
         home,
         postRegisterCode,
@@ -109,7 +177,10 @@ module.exports = function suggestionRoute(db, spazaSuggest){
         userRoute,
         dynamicClent,
         dynamicClentPost,
-        ownerLogin
+        ownerLogin,
+        ownerRoute,
+        dynamicSpaza,
+        dynamicSpazaPost
 
 
     }
