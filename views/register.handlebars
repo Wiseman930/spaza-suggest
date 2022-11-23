@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="/path/to/flash.min.js"></script>
+    <script src="/public/client.js"></script>
+    <title>Document</title>
+</head>
+<body>
+        <div class="heads">
+                    <div class="div_icon">
+                       
+                    </div>
+                    <div class="tittle">
+
+                    <div class="admin">
+                        <a href="/index"> Login </a>
+                    </div>
+    </div>
+    <form action="register" method="post">
+<div class="login">
+  <h2 class="login-header">Register</h2>
+  <form class="login-container">
+    <p><input type="text" placeholder="Enter Name" name="fname"></p>
+    <p><input type="submit" name="fontSizeControl" value="submit"></p>
+    <div class="p">
+    <P>
+        <div class="messages">
+        <div class="errorMessages">
+            <span>{{messages.errorMessages}}</span>
+        </div>
+            <div class="codeMessages">
+            {{#if messages.codeMessages}}
+            <span>{{messages.codeMessages}}</span>
+            {{/if}}
+        </div>
+    </div>
+    </P>
+    </div>
+</div>
+    </form>
+</body>
+</html>

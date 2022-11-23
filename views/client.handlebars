@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="style.css">
+    <script src="/path/to/flash.min.js"></script>
+    <script src="/client.js"></script>
+    <title>Document</title>
+    <style>
+
+
+    </style>
+</head>
+ <h1>{{registerName}} Make A suggestion</h1>
+ <form action="{{registerName}}" method="post">
+  <table>
+                <tr>
+                    <td><label class="townText" for="towns">Select an Area</label></td>
+                    <td>
+                        <select id="banks" name="area" class="areaname" aria-label="State">
+                            <option value='' >Select Area</option>
+                            {{#each areas}}
+                            <option value={{id}} >{{area_name}}</option>
+                            {{/each}}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="Amount">Product suggestion</label></td>
+                    <td><input type="text" placeholder="" id="lname" name="suggest"></td>
+                </tr>
+
+            </table>
+        <div class="Add">
+            <button class="log" type="submit" id="log" name="button">Add suggestion</button>
+        </div>
+        </form>
+         <div class="errorMessages">
+                {{#if messages.errors}}
+                <span>{{messages.errors}}</span>
+                {{/if}}
+            </div>
+
+<body>
+
+</body>
+
+</html>
