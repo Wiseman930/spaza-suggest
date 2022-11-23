@@ -57,6 +57,7 @@ app.get('/index', theSuggestion.login)
 app.post('/client', theSuggestion.userRoute);
 app.get('/client/:username', theSuggestion.dynamicClent);
 app.post('/client/:username', theSuggestion.dynamicClentPost);
+app.get('/spaza_login', theSuggestion.ownerLogin);
 
 
   let PORT = process.env.PORT || 3007;

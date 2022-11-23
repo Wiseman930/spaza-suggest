@@ -96,13 +96,17 @@ module.exports = function suggestionRoute(db, spazaSuggest){
 
       res.redirect(`/client/${uppercaseName}`);
     }
+    async function ownerLogin(req, res){
+      res.render('spaza_login')
+    }
     return{
         home,
         postRegisterCode,
         login,
         userRoute,
         dynamicClent,
-        dynamicClentPost
+        dynamicClentPost,
+        ownerLogin
 
 
     }
