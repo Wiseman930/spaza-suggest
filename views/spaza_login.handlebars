@@ -27,14 +27,14 @@
     <div class="login">
         <h2 class="login-header">Spaza Login</h2>
         <label class="townText" for="towns">Select Your Spaza</label>
-         <select id="banks" name="area" class="areaname" aria-label="State">
+         <select id="banks" name="area" class="areashop" aria-label="State">
                             <option value='' >Select Your Shop</option>
                             {{#each spazaShop}}
                             <option value={{id}} >{{shop_name}}</option>
                             {{/each}}
         </select>
     <div><label for="Amount">Product suggestion</label>
-    <input type="text" placeholder="enter code" id="lname" name="suggest"></div>
+    <input type="text" placeholder="enter code" id="lname" name="code"></div>
     <button class="log" type="submit" id="log" name="button">Login</button>
     <div class="p">
         <P>
